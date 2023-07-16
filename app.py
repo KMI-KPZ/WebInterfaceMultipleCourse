@@ -17,8 +17,8 @@ import tornado.ioloop
 
 # Database connection
 db = pymysql.connect(host='localhost',
-                     user='pavlayang',
-                     password='Rjirbvsirb123!',
+                     user='HERE YOU WRITE USER NAME',
+                     password='PUT THE PASSWORD FOR YOR DATABASE',
                      db='novel_course')
 
 class MainHandler(tornado.web.RequestHandler):
@@ -87,7 +87,7 @@ class SaveLCHandler(tornado.web.RequestHandler):
                            (lc_course_name, lc_name, lc_desc))
             db.commit()
 
-            # Update RDF
+            # update RDF for any changes
             update_rdf(lc_course_name)
 
             self.write("LC information is saved")
@@ -118,12 +118,12 @@ class AllCoursesHandler(tornado.web.RequestHandler):
 class CourseHandler(tornado.web.RequestHandler):
     def get(self, course_name):
         try:
-            # Read RDF file for the specific course
+            # read RDF file for the specific course
             file_path = f"{course_name}.rdf"
             graph = rdflib.Graph()
             graph.parse(file_path, format="xml")
 
-            # Retrieve the LC from RDF graph
+            #retrieve the LC from RDF graph
             oer = rdflib.Namespace("http://oerschema.org/LearningComponent/")
             lc_list = []
             for lc_uri in graph.subjects(rdflib.RDF.type, oer.LearningComponent):
@@ -161,16 +161,16 @@ class UpdateLCHandler(tornado.web.RequestHandler):
 
 def update_rdf(course_name):
     try:
-        # Create the RDF graph and namespace
+        # create the RDF graph and namespace
         graph = rdflib.Graph()
         oer = rdflib.Namespace("http://oerschema.org/LearningComponent/")
 
-        # Load existing RDF data, if any
+        # load existing RDF data, if any
         file_path = f"{course_name}.rdf"
         if os.path.exists(file_path):
             graph.parse(file_path, format="xml")
 
-        # Remove all existing LC triples from the graph
+        # Remove all existing LC triples from the graph in case of mistakes
         lc_uri = oer[course_name.replace(" ", "_")]
         graph.remove((lc_uri, None, None))
 
