@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ course_name }} Learning Components</title>
+</head>
+<body>
+    <h1>{{ course_name }} Learning Components</h1>
+
+    <ul>
+        {% for lc_name, lc_desc, lc_id in lc_list %}
+        <li>
+            <h2>{{ lc_name }}</h2>
+            <p>{{ lc_desc }}</p>
+
+            <!-- Update Form -->
+            <form action="/update_lc" method="POST">
+                <input type="hidden" name="lc_id" value="{{ lc_id }}">
+                <label for="lc_name">LC Name:</label>
+                <input type="text" id="lc_name" name="lc_name" value="{{ lc_name }}" required><br>
+                <label for="lc_desc">LC Description:</label>
+                <textarea id="lc_desc" name="lc_desc" required>{{ lc_desc }}</textarea><br>
+                <input type="submit" value="Update">
+            </form>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+
+
+
+

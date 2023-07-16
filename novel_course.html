@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Online Learning Course</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            color: #666;
+            margin-top: 40px;
+        }
+
+        h3 {
+            color: #888;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            color: #333;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin-bottom: 20px;
+        }
+
+        input[type="checkbox"] {
+            margin-top: 5px;
+            margin-bottom: 20px;
+        }
+
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #555;
+        }
+
+        #course {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Course Details</h1>
+
+    <div id="course">
+        <h2>Course ID: <span style="color: #337ab7;">{{ course_id }}</span></h2>
+        <h2>Course Name: <span style="color: #337ab7;">{{ course_name }}</span></h2>
+        <h3>Instructor: <span style="color: #777;">{{ instructor }}</span></h3>
+        <p>Description: {{ description }}</p>
+    </div>
+
+    <h2>LTI Consumer Settings</h2>
+    <form action="/save_settings" method="POST">
+        <label for="consumer_key">Consumer Key:</label>
+        <input type="text" id="consumer_key" name="consumer_key" required><br>
+
+        <label for="consumer_secret">Consumer Secret:</label>
+        <input type="text" id="consumer_secret" name="consumer_secret" required><br>
+
+        <label for="enable_grades">Enable Grades:</label>
+        <input type="checkbox" id="enable_grades" name="enable_grades"><br>
+
+        <label for="launch_url">Launch URL:</label>
+        <input type="text" id="launch_url" name="launch_url" required><br>
+
+        <input type="submit" value="Save Settings">
+    </form>
+
+    <h2>Learning Component Manual Input</h2>
+    <form action="/save_lc" method="POST">
+        <label for="lc_course_name">Course Name:</label>
+        <input type="text" id="lc_course_name" name="lc_course_name" required><br>
+
+        <label for="lc_name">LC Name:</label>
+        <input type="text" id="lc_name" name="lc_name" required><br>
+
+        <label for="lc_desc">LC Description:</label>
+        <textarea id="lc_desc" name="lc_desc" required></textarea><br>
+
+        <input type="submit" value="Save LC">
+    </form>
+</body>
+</html>

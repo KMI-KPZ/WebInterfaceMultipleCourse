@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+   xmlns:oer="http://oerschema.org/LearningComponent/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+>
+  <rdf:Description rdf:about="http://oerschema.org/LearningComponent/Test_Course">
+    <rdf:type rdf:resource="http://oerschema.org/LearningComponent/LearningComponent"/>
+    <oer:Course>Learning component 1</oer:Course>
+    <oer:Course>Learning Component 2</oer:Course>
+    <oer:Course>Learning component 3</oer:Course>
+    <oer:Course>Learning component 4</oer:Course>
+    <oer:Course>LC1</oer:Course>
+    <oer:Course>lll</oer:Course>
+    <oer:forCourse>introduction to the course</oer:forCourse>
+    <oer:forCourse>basics of stuff</oer:forCourse>
+    <oer:forCourse>what is rdf</oer:forCourse>
+    <oer:forCourse>why rdf</oer:forCourse>
+    <oer:forCourse>LC1</oer:forCourse>
+    <oer:forCourse>lll</oer:forCourse>
+  </rdf:Description>
+</rdf:RDF>
